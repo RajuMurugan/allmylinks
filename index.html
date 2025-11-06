@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AllMyLinks — Your Gateway to the Web</title>
+  <meta name="description" content="AllMyLinks — your personalized collection of favorite websites, neatly categorized.">
   <style>
     body {
       margin: 0;
@@ -36,19 +37,36 @@
       color: #fff;
       font-size: 15px;
     }
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      padding: 20px;
+
+    main {
       max-width: 1200px;
       margin: auto;
+      padding: 10px;
     }
+
+    /* Category title */
+    .category {
+      margin: 35px 0 10px;
+      text-align: left;
+      font-size: 20px;
+      font-weight: 600;
+      color: #00c4ff;
+    }
+
+    /* Site grid per row */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
     .site {
       text-decoration: none;
       color: #fff;
-      width: 100px;
+      width: 90px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -58,24 +76,30 @@
       transform: scale(1.08);
     }
     .icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
       background: linear-gradient(135deg, #06b6d4, #9333ea);
-      font-size: 24px;
-      margin-bottom: 8px;
+      font-size: 22px;
+      margin-bottom: 6px;
     }
     .sitename {
-      font-size: 14px;
+      font-size: 13px;
       color: #e0e0e0;
     }
+
     footer {
       margin-top: 40px;
       padding: 20px;
       color: #aaa;
       font-size: 13px;
+    }
+
+    @media (max-width:600px){
+      .row{justify-content:center;}
+      .site{width:70px;}
     }
   </style>
 </head>
@@ -87,43 +111,58 @@
     </div>
   </header>
 
-  <main>
-    <div class="grid" id="sites">
+  <main id="content">
 
-      <!-- Example links -->
-      <a href="https://www.google.com" target="_blank" class="site" data-name="google">
-        <div class="icon" style="background:linear-gradient(135deg,#ffd54a,#ff6b6b);">G</div>
-        <div class="sitename">Google</div>
-      </a>
-      <a href="https://www.youtube.com" target="_blank" class="site" data-name="youtube">
-        <div class="icon" style="background:linear-gradient(135deg,#ff4444,#ff7043);">▶</div>
-        <div class="sitename">YouTube</div>
-      </a>
-      <a href="https://www.facebook.com" target="_blank" class="site" data-name="facebook">
-        <div class="icon" style="background:linear-gradient(135deg,#1877f2,#00bcd4);">f</div>
-        <div class="sitename">Facebook</div>
-      </a>
-      <a href="https://www.amazon.com" target="_blank" class="site" data-name="amazon">
-        <div class="icon" style="background:linear-gradient(135deg,#ffd740,#ff8a65);">a</div>
-        <div class="sitename">Amazon</div>
-      </a>
-      <a href="https://www.instagram.com" target="_blank" class="site" data-name="instagram">
-        <div class="icon" style="background:linear-gradient(135deg,#f58529,#dd2a7b);">📸</div>
-        <div class="sitename">Instagram</div>
-      </a>
-      <a href="https://www.netflix.com" target="_blank" class="site" data-name="netflix">
-        <div class="icon" style="background:linear-gradient(135deg,#e53935,#8e24aa);">N</div>
-        <div class="sitename">Netflix</div>
-      </a>
-      <a href="https://twitter.com" target="_blank" class="site" data-name="twitter">
-        <div class="icon" style="background:linear-gradient(135deg,#1da1f2,#4facfe);">X</div>
-        <div class="sitename">Twitter</div>
-      </a>
-      <a href="https://nptel.ac.in" target="_blank" class="site" data-name="nptel">
-        <div class="icon" style="background:linear-gradient(135deg,#ffb300,#ff7043);">N</div>
-        <div class="sitename">NPTEL</div>
-      </a>
+    <!-- 🔍 Search Engines -->
+    <div class="category">Search Engines</div>
+    <div class="row">
+      <a href="https://www.google.com" target="_blank" class="site" data-name="google"><div class="icon" style="background:linear-gradient(135deg,#ffd54a,#ff6b6b);">G</div><div class="sitename">Google</div></a>
+      <a href="https://www.bing.com" target="_blank" class="site" data-name="bing"><div class="icon" style="background:linear-gradient(135deg,#1e88e5,#7c4dff);">B</div><div class="sitename">Bing</div></a>
+      <a href="https://search.yahoo.com" target="_blank" class="site" data-name="yahoo"><div class="icon" style="background:linear-gradient(135deg,#8e24aa,#f06292);">Y</div><div class="sitename">Yahoo</div></a>
+      <a href="https://duckduckgo.com" target="_blank" class="site" data-name="duckduckgo"><div class="icon" style="background:linear-gradient(135deg,#ff8a00,#ff4d4d);">D</div><div class="sitename">DuckDuckGo</div></a>
+      <a href="https://www.msn.com" target="_blank" class="site" data-name="msn"><div class="icon" style="background:linear-gradient(135deg,#4a90e2,#50c9ce);">M</div><div class="sitename">MSN</div></a>
     </div>
+
+    <!-- 🎥 Video & Streaming -->
+    <div class="category">Video & Streaming</div>
+    <div class="row">
+      <a href="https://www.youtube.com" target="_blank" class="site" data-name="youtube"><div class="icon" style="background:linear-gradient(135deg,#ff4444,#ff7043);">▶</div><div class="sitename">YouTube</div></a>
+      <a href="https://www.netflix.com" target="_blank" class="site" data-name="netflix"><div class="icon" style="background:linear-gradient(135deg,#e53935,#8e24aa);">N</div><div class="sitename">Netflix</div></a>
+      <a href="https://www.hotstar.com" target="_blank" class="site" data-name="hotstar"><div class="icon" style="background:linear-gradient(135deg,#00bcd4,#4caf50);">H</div><div class="sitename">Hotstar</div></a>
+      <a href="https://www.primevideo.com" target="_blank" class="site" data-name="primevideo"><div class="icon" style="background:linear-gradient(135deg,#0f9b8e,#007acc);">P</div><div class="sitename">Prime</div></a>
+      <a href="https://www.sonyliv.com" target="_blank" class="site" data-name="sonyliv"><div class="icon" style="background:linear-gradient(135deg,#ff8c00,#8a2be2);">S</div><div class="sitename">SonyLIV</div></a>
+    </div>
+
+    <!-- 🌍 Social -->
+    <div class="category">Social</div>
+    <div class="row">
+      <a href="https://www.facebook.com" target="_blank" class="site" data-name="facebook"><div class="icon" style="background:linear-gradient(135deg,#1877f2,#00bcd4);">f</div><div class="sitename">Facebook</div></a>
+      <a href="https://twitter.com" target="_blank" class="site" data-name="twitter"><div class="icon" style="background:linear-gradient(135deg,#1da1f2,#4facfe);">X</div><div class="sitename">Twitter</div></a>
+      <a href="https://www.instagram.com" target="_blank" class="site" data-name="instagram"><div class="icon" style="background:linear-gradient(135deg,#f58529,#dd2a7b);">📸</div><div class="sitename">Instagram</div></a>
+      <a href="https://www.linkedin.com" target="_blank" class="site" data-name="linkedin"><div class="icon" style="background:linear-gradient(135deg,#0a66c2,#0072b1);">in</div><div class="sitename">LinkedIn</div></a>
+      <a href="https://www.reddit.com" target="_blank" class="site" data-name="reddit"><div class="icon" style="background:linear-gradient(135deg,#ff4500,#ff6b6b);">👽</div><div class="sitename">Reddit</div></a>
+    </div>
+
+    <!-- 🛒 Shopping -->
+    <div class="category">Shopping</div>
+    <div class="row">
+      <a href="https://www.amazon.com" target="_blank" class="site" data-name="amazon"><div class="icon" style="background:linear-gradient(135deg,#ffd740,#ff8a65);">a</div><div class="sitename">Amazon</div></a>
+      <a href="https://www.flipkart.com" target="_blank" class="site" data-name="flipkart"><div class="icon" style="background:linear-gradient(135deg,#00bcd4,#00796b);">F</div><div class="sitename">Flipkart</div></a>
+      <a href="https://www.aliexpress.com" target="_blank" class="site" data-name="aliexpress"><div class="icon" style="background:linear-gradient(135deg,#ff7043,#7c4dff);">α</div><div class="sitename">AliExpress</div></a>
+      <a href="https://www.myntra.com" target="_blank" class="site" data-name="myntra"><div class="icon" style="background:linear-gradient(135deg,#ff4081,#f50057);">M</div><div class="sitename">Myntra</div></a>
+      <a href="https://www.snapdeal.com" target="_blank" class="site" data-name="snapdeal"><div class="icon" style="background:linear-gradient(135deg,#d32f2f,#f57c00);">S</div><div class="sitename">Snapdeal</div></a>
+    </div>
+
+    <!-- 🎓 Education -->
+    <div class="category">Education</div>
+    <div class="row">
+      <a href="https://nptel.ac.in" target="_blank" class="site" data-name="nptel"><div class="icon" style="background:linear-gradient(135deg,#ffb300,#ff7043);">N</div><div class="sitename">NPTEL</div></a>
+      <a href="https://www.coursera.org" target="_blank" class="site" data-name="coursera"><div class="icon" style="background:linear-gradient(135deg,#00bcd4,#3949ab);">C</div><div class="sitename">Coursera</div></a>
+      <a href="https://www.khanacademy.org" target="_blank" class="site" data-name="khan academy"><div class="icon" style="background:linear-gradient(135deg,#7c4dff,#29b6f6);">K</div><div class="sitename">Khan</div></a>
+      <a href="https://swayam.gov.in" target="_blank" class="site" data-name="swayam"><div class="icon" style="background:linear-gradient(135deg,#00c853,#1de9b6);">S</div><div class="sitename">Swayam</div></a>
+      <a href="https://www.udemy.com" target="_blank" class="site" data-name="udemy"><div class="icon" style="background:linear-gradient(135deg,#ff6f00,#ff8f00);">U</div><div class="sitename">Udemy</div></a>
+    </div>
+
   </main>
 
   <footer>
