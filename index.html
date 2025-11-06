@@ -4,154 +4,141 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AllMyLinks — Your Gateway to the Web</title>
-  <meta name="description" content="AllMyLinks — fast directory of the world's popular websites. Click icons to open sites, use search to filter categories.">
-  <meta name="keywords" content="links, websites, directory, web links, favorite websites">
-  <meta name="author" content="Raju Murugan">
-
   <style>
-    :root {
-      --bg: #0f1724; --card: #0b1220; --muted: #9aa4b2; --accent: #06b6d4; 
-      --glass: rgba(255,255,255,0.03); --radius: 12px; --max: 1100px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,#071226 0%, #071a2b 100%);
-      color: #e6eef6;
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto;
+      background: #0d1117;
+      color: #f5f5f5;
+      text-align: center;
     }
-    .wrap { max-width: var(--max); margin: 28px auto; padding: 20px; }
-
-    header { display: flex; align-items: center; gap: 16px; }
-    .logo {
-      width: 56px; height: 56px; border-radius: 12px;
-      background: linear-gradient(135deg,var(--accent),#7c3aed);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 20px; color: #062027;
+    header {
+      padding: 30px 10px;
     }
-    h1 { margin: 0; font-size: 22px; }
-    p.lead { color: var(--muted); font-size: 14px; margin-top: 4px; }
-
-    .search-bar {
-      display: flex; align-items: center;
-      background: var(--glass); padding: 10px;
-      border-radius: 10px; margin-top: 20px;
+    h1 {
+      font-size: 28px;
+      margin: 10px 0;
+      color: #00c4ff;
     }
-    .search-bar input {
-      background: transparent; border: none; outline: none;
-      color: inherit; font-size: 15px; width: 100%;
+    .search {
+      margin: 20px auto;
+      max-width: 400px;
+      display: flex;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 8px 12px;
     }
-    .search-bar button { background: transparent; border: none; color: var(--muted); cursor: pointer; }
-
-    section { margin-top: 30px; }
-    h2 { font-size: 18px; margin-bottom: 12px; }
-
-    .link-list { display: flex; flex-direction: column; gap: 10px; }
+    .search input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 15px;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
     .site {
-      display: flex; align-items: center; gap: 12px;
-      background: var(--glass); border-radius: 10px;
-      padding: 10px 14px; transition: background .15s ease;
-      text-decoration: none; color: #e6eef6;
+      text-decoration: none;
+      color: #fff;
+      width: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s ease;
     }
-    .site:hover { background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+    .site:hover {
+      transform: scale(1.08);
+    }
     .icon {
-      width: 40px; height: 40px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; color: #062027;
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #06b6d4, #9333ea);
+      font-size: 24px;
+      margin-bottom: 8px;
     }
-    .info { flex: 1; }
-    .sitename { font-size: 15px; font-weight: 600; }
-    .sitedesc { font-size: 12px; color: var(--muted); }
-
-    footer { margin-top: 40px; text-align: center; color: var(--muted); font-size: 13px; }
+    .sitename {
+      font-size: 14px;
+      color: #e0e0e0;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      color: #aaa;
+      font-size: 13px;
+    }
   </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">AL</div>
-      <div>
-        <h1>AllMyLinks</h1>
-        <p class="lead">All your favorite websites — neatly organized in one place.</p>
-      </div>
-    </header>
-
-    <div class="search-bar">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="margin-right:8px;opacity:.8">
-        <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.5"></circle>
-      </svg>
-      <input id="search" placeholder="Search any site or category...">
-      <button id="clear" title="Clear" style="display:none;">✕</button>
+  <header>
+    <h1>AllMyLinks</h1>
+    <div class="search">
+      <input id="search" type="text" placeholder="Search your favorite sites...">
     </div>
+  </header>
 
-    <!-- Category: Search Engines -->
-    <section>
-      <h2>🔍 Search Engines</h2>
-      <div class="link-list">
-        <a href="https://www.google.com" class="site" target="_blank">
-          <div class="icon" style="background:linear-gradient(135deg,#ffd54a,#ff6b6b)">G</div>
-          <div class="info">
-            <div class="sitename">Google</div>
-            <div class="sitedesc">Search everything instantly</div>
-          </div>
-        </a>
-        <a href="https://www.bing.com" class="site" target="_blank">
-          <div class="icon" style="background:linear-gradient(135deg,#1e88e5,#7c4dff);color:#fff">B</div>
-          <div class="info"><div class="sitename">Bing</div><div class="sitedesc">Microsoft’s search engine</div></div>
-        </a>
-        <a href="https://search.yahoo.com" class="site" target="_blank">
-          <div class="icon" style="background:linear-gradient(135deg,#8e24aa,#f06292);color:#fff">Y</div>
-          <div class="info"><div class="sitename">Yahoo</div><div class="sitedesc">News and web search</div></div>
-        </a>
-      </div>
-    </section>
+  <main>
+    <div class="grid" id="sites">
 
-    <!-- Category: Video -->
-    <section>
-      <h2>🎬 Video & Streaming</h2>
-      <div class="link-list">
-        <a href="https://www.youtube.com" class="site" target="_blank">
-          <div class="icon" style="background:linear-gradient(135deg,#ff4444,#ff7043);color:#fff">▶</div>
-          <div class="info"><div class="sitename">YouTube</div><div class="sitedesc">Watch & share videos</div></div>
-        </a>
-        <a href="https://www.netflix.com" class="site" target="_blank">
-          <div class="icon" style="background:linear-gradient(135deg,#e53935,#8e24aa);color:#fff">N</div>
-          <div class="info"><div class="sitename">Netflix</div><div class="sitedesc">Movies & series</div></div>
-        </a>
-      </div>
-    </section>
+      <!-- Example links -->
+      <a href="https://www.google.com" target="_blank" class="site" data-name="google">
+        <div class="icon" style="background:linear-gradient(135deg,#ffd54a,#ff6b6b);">G</div>
+        <div class="sitename">Google</div>
+      </a>
+      <a href="https://www.youtube.com" target="_blank" class="site" data-name="youtube">
+        <div class="icon" style="background:linear-gradient(135deg,#ff4444,#ff7043);">▶</div>
+        <div class="sitename">YouTube</div>
+      </a>
+      <a href="https://www.facebook.com" target="_blank" class="site" data-name="facebook">
+        <div class="icon" style="background:linear-gradient(135deg,#1877f2,#00bcd4);">f</div>
+        <div class="sitename">Facebook</div>
+      </a>
+      <a href="https://www.amazon.com" target="_blank" class="site" data-name="amazon">
+        <div class="icon" style="background:linear-gradient(135deg,#ffd740,#ff8a65);">a</div>
+        <div class="sitename">Amazon</div>
+      </a>
+      <a href="https://www.instagram.com" target="_blank" class="site" data-name="instagram">
+        <div class="icon" style="background:linear-gradient(135deg,#f58529,#dd2a7b);">📸</div>
+        <div class="sitename">Instagram</div>
+      </a>
+      <a href="https://www.netflix.com" target="_blank" class="site" data-name="netflix">
+        <div class="icon" style="background:linear-gradient(135deg,#e53935,#8e24aa);">N</div>
+        <div class="sitename">Netflix</div>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="site" data-name="twitter">
+        <div class="icon" style="background:linear-gradient(135deg,#1da1f2,#4facfe);">X</div>
+        <div class="sitename">Twitter</div>
+      </a>
+      <a href="https://nptel.ac.in" target="_blank" class="site" data-name="nptel">
+        <div class="icon" style="background:linear-gradient(135deg,#ffb300,#ff7043);">N</div>
+        <div class="sitename">NPTEL</div>
+      </a>
+    </div>
+  </main>
 
-    <!-- Category: Social -->
-    <section>
-      <h2>💬 Social</h2>
-      <div class="link-list">
-        <a href="https://www.facebook.com" class="site" target="_blank">
-          <div class="icon" style="background:linear-gradient(135deg,#1877f2,#00bcd4);color:#fff">f</div>
-          <div class="info"><div class="sitename">Facebook</div><div class="sitedesc">Connect with friends</div></div>
-        </a>
-        <a href="https://twitter.com" class="site" target="_blank">
-          <div class="icon" style="background:linear-gradient(135deg,#1da1f2,#4facfe);color:#062027">X</div>
-          <div class="info"><div class="sitename">X / Twitter</div><div class="sitedesc">Short updates & trends</div></div>
-        </a>
-      </div>
-    </section>
-
-    <footer>© 2025 AllMyLinks — Curated links to the world’s top sites.</footer>
-  </div>
+  <footer>
+    © 2025 AllMyLinks — All trademarks belong to respective owners.
+  </footer>
 
   <script>
-    const q=document.getElementById('search');
-    const clear=document.getElementById('clear');
-    q.addEventListener('input',()=>{
-      const val=q.value.toLowerCase().trim();
-      clear.style.display=val?'inline':'none';
-      document.querySelectorAll('.site').forEach(site=>{
-        const text=site.textContent.toLowerCase();
-        site.style.display=text.includes(val)?'flex':'none';
+    const input = document.getElementById('search');
+    input.addEventListener('input', e => {
+      const val = e.target.value.toLowerCase();
+      document.querySelectorAll('.site').forEach(site => {
+        const name = site.dataset.name;
+        site.style.display = name.includes(val) ? 'flex' : 'none';
       });
     });
-    clear.addEventListener('click',()=>{q.value='';q.dispatchEvent(new Event('input'));});
   </script>
 </body>
 </html>
